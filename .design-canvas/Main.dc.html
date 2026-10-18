@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap">
+  <style>
+    body { margin: 0; background: #0b0b0d; color: #ece9e2;
+           font-family: 'Archivo', system-ui, sans-serif; font-size: 15px; line-height: 1.6; }
+    a { color: #e60012; text-decoration: none; }
+    a:hover { color: #ff7a18; }
+  </style>
+</helmet>
+
+<div style="padding: 64px 56px; min-height: 100%; box-sizing: border-box; display: flex; flex-direction: column; gap: 48px">
+
+  <div style="display: flex; flex-direction: column; gap: 10px">
+    <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.04em; color: #8a8f9c; position: relative; padding-left: 16px">
+      <span style="position: absolute; left: 0; top: 50%; width: 6px; height: 14px; background: #e60012; transform: translateY(-50%) skewX(-8deg)"></span>
+      DESIGN SYSTEM / v2
+    </div>
+    <h1 style="font-size: 68px; font-weight: 500; letter-spacing: -0.03em; line-height: 1.02; margin: 6px 0 0">Tokens &amp; patterns</h1>
+    <p style="max-width: 54ch; color: #8a8f9c; font-size: 16px; margin: 8px 0 0">
+      Extracted from <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #ece9e2">src/styles/tokens.css</span>
+      and the component stylesheets. Every value here is lifted verbatim from the source — no rounding.
+    </p>
+  </div>
+
+  <div style="border-top: 1px solid #24242b; padding-top: 36px; display: flex; flex-direction: column; gap: 22px">
+    <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #e60012">The direction</div>
+    <p style="max-width: 62ch; font-size: 17px; color: #ece9e2; margin: 0">
+      A calm, spacious, near-black canvas with <em style="font-style: normal; color: #e60012">one loud focal point</em> — the orbital
+      tiger hero. Crimson is the loud interactive accent; the hero art carries the color riot.
+    </p>
+  </div>
+
+  <div style="border-top: 1px solid #24242b; padding-top: 36px; display: flex; flex-direction: column; gap: 20px">
+    <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #ff7a18">Accent discipline</div>
+    <p style="max-width: 62ch; color: #8a8f9c; margin: 0 0 4px">Keep these roles strict so "loud" stays meaningful.</p>
+
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px">
+
+      <div style="border: 1px solid #24242b; padding: 20px; display: flex; flex-direction: column; gap: 12px">
+        <div style="height: 56px; background: #e60012"></div>
+        <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.05em; color: #e60012">--crimson</div>
+        <div style="font-size: 14px; color: #ece9e2">PRIMARY</div>
+        <div style="font-size: 13px; color: #8a8f9c; line-height: 1.5">Links, hover, focus, KABOOM menu + accents.</div>
+      </div>
+
+      <div style="border: 1px solid #24242b; padding: 20px; display: flex; flex-direction: column; gap: 12px">
+        <div style="height: 56px; background: #ff7a18"></div>
+        <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.05em; color: #ff7a18">--ember</div>
+        <div style="font-size: 14px; color: #ece9e2">WARMTH</div>
+        <div style="font-size: 13px; color: #8a8f9c; line-height: 1.5">The tiger; the sketch framework tag.</div>
+      </div>
+
+      <div style="border: 1px solid #24242b; padding: 20px; display: flex; flex-direction: column; gap: 12px">
+        <div style="height: 56px; background: #00e5ff"></div>
+        <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.05em; color: #00e5ff">--signal</div>
+        <div style="font-size: 14px; color: #ece9e2">THE MACHINE</div>
+        <div style="font-size: 13px; color: #8a8f9c; line-height: 1.5">Hero internals only. Never general UI.</div>
+      </div>
+
+    </div>
+
+    <div style="border: 1px solid #24242b; padding: 20px; display: flex; flex-direction: column; gap: 14px; margin-top: 4px">
+      <div style="display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap">
+        <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.05em; color: #8a8f9c">ACCENTS[] — orbit birds</div>
+        <div style="font-size: 13px; color: #8a8f9c">decorative per-item accents; the one place many colors are allowed</div>
+      </div>
+      <div style="display: flex; gap: 10px; flex-wrap: wrap">
+        <div style="display: flex; flex-direction: column; gap: 8px; flex-grow: 1">
+          <div style="height: 40px; background: #4aa5ff"></div>
+          <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; color: #767c8e">#4aa5ff</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px; flex-grow: 1">
+          <div style="height: 40px; background: #3ddc84"></div>
+          <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; color: #767c8e">#3ddc84</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px; flex-grow: 1">
+          <div style="height: 40px; background: #ffd000"></div>
+          <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; color: #767c8e">#ffd000</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px; flex-grow: 1">
+          <div style="height: 40px; background: #ff2d95"></div>
+          <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; color: #767c8e">#ff2d95</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px; flex-grow: 1">
+          <div style="height: 40px; background: #b06bff"></div>
+          <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; color: #767c8e">#b06bff</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px; flex-grow: 1">
+          <div style="height: 40px; background: #ff7a18"></div>
+          <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; color: #767c8e">#ff7a18</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

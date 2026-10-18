@@ -1,0 +1,177 @@
+/* ═══════════════════════════════════════════════════════════════
+   ORBIT HERO — calm, spacious, dark. Color lives in the satellites;
+   everything else stays quiet.
+   ═══════════════════════════════════════════════════════════════ */
+
+.orbit-stage {
+  /* pinned to the viewport so the tiger + orbit are ALWAYS dead-center,
+     independent of the page's flex layout */
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100svh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* ── the placeholder head (owner drops the 3D model in here) ── */
+.orbit-core {
+  position: relative;
+  width: clamp(200px, 42vmin, 380px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 50% 45%, rgba(255, 122, 24, 0.14), transparent 68%);
+  border: 1px dashed var(--line);
+}
+.orbit-core-note {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── satellites = nav ── */
+.orbit-nav {
+  position: absolute;
+  inset: 0;
+}
+.sat {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: inherit;
+  will-change: transform;
+}
+.sat-dot {
+  flex: none;
+  border-radius: 50%;
+  background: var(--c);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4), 0 0 14px 0 var(--c);
+  transition: transform 0.25s var(--ease-snap);
+}
+.sat:hover .sat-dot,
+.sat:focus-visible .sat-dot {
+  transform: scale(1.35);
+}
+
+/* clean label in the bird's own color — hidden until hover/focus */
+.sat-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--c);
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  transform: translateX(-6px);
+  transition: opacity 0.2s var(--ease), transform 0.25s var(--ease-snap);
+}
+.sat-label .sat-kind {
+  font-style: normal;
+  color: var(--dim);
+  font-size: 10px;
+}
+.sat:hover .sat-label,
+.sat:focus-visible .sat-label {
+  opacity: 1;
+  transform: translateX(0);
+}
+.sat:focus-visible {
+  outline: 2px solid var(--crimson);
+  outline-offset: 6px;
+}
+
+/* ── hint + caption ── */
+.orbit-hint {
+  position: absolute;
+  bottom: 66px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--muted);
+  animation: hint-pulse 2.6s var(--ease) infinite;
+  transition: opacity 0.5s var(--ease);
+}
+.orbit-hint.gone {
+  opacity: 0;
+}
+@keyframes hint-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+.orbit-caption {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--dim);
+  text-align: center;
+}
+
+/* ══ mobile: no orbit. Satellites reflow into a tappable list; labels
+   always visible (touch has no hover). ══ */
+@media (max-width: 620px) {
+  .orbit-stage {
+    /* back into normal flow so the list can scroll on small screens */
+    position: static;
+    inset: auto;
+    width: 100%;
+    height: auto;
+    min-height: 100svh;
+    padding: 12vh 0 6vh;
+    gap: 6vh;
+    grid-auto-flow: row;
+  }
+  .orbit-core {
+    width: clamp(160px, 54vmin, 240px);
+  }
+  .orbit-nav {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px 22px;
+    padding: 0 var(--gutter);
+  }
+  .sat {
+    position: static;
+    transform: none !important;
+  }
+  .sat-label {
+    opacity: 1;
+    transform: none;
+  }
+  .orbit-hint {
+    display: none;
+  }
+  .orbit-caption {
+    position: static;
+    transform: none;
+    margin-top: 2vh;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .orbit-hint {
+    animation: none;
+  }
+}
+
+/* cancel the global `section:first-of-type { margin-top: 8vh }`, which pushed
+   the orbit ~8% of the screen height below true center (needs the extra
+   specificity to beat that rule) */
+.wrap section.orbit-stage {
+  margin: 0;
+}

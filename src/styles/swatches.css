@@ -1,0 +1,18 @@
+/* Placeholder thumbnail gradients from the demo (sw-1…sw-4). Used by the
+   work-list trailing preview, the sketches tiles, and case-study media
+   until real images exist. When a real `thumb` is set in data, the image
+   is used instead and these are ignored. Not decorative flourish — they
+   are stand-ins for pixels (brief §7). */
+
+.sw-1 {
+  background: repeating-linear-gradient(115deg, #1b1030 0 3px, #2b0a3d 3px 6px);
+}
+.sw-2 {
+  background: repeating-linear-gradient(0deg, #1a1b1f 0 2px, #0e0f12 2px 5px);
+}
+.sw-3 {
+  background: repeating-linear-gradient(45deg, #0b2530 0 2px, #06161d 2px 4px);
+}
+.sw-4 {
+  background: repeating-linear-gradient(90deg, #201a14 0 6px, #14100c 6px 12px);
+}

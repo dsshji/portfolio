@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap">
+  <style>
+    body { margin: 0; background: #0b0b0d; color: #ece9e2;
+           font-family: 'Archivo', system-ui, sans-serif; font-size: 15px; line-height: 1.6; }
+    a { color: #e60012; text-decoration: none; }
+    a:hover { color: #ff7a18; }
+  </style>
+</helmet>
+
+<div style="padding: 56px 48px; display: flex; flex-direction: column; gap: 40px">
+
+  <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.04em; color: #8a8f9c; position: relative; padding-left: 16px; border-bottom: 1px solid #24242b; padding-bottom: 10px">
+    <span style="position: absolute; left: 0; top: 40%; width: 6px; height: 14px; background: #4aa5ff; transform: translateY(-50%) skewX(-8deg)"></span>
+    CANVAS &amp; INK
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 2px">
+
+    <div style="display: grid; grid-template-columns: 120px 1fr 130px; gap: 24px; align-items: center; padding: 16px 0; border-bottom: 1px solid #24242b">
+      <div style="height: 52px; background: #0b0b0d; border: 1px solid #24242b"></div>
+      <div style="display: flex; flex-direction: column; gap: 2px">
+        <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #ece9e2">--void</div>
+        <div style="font-size: 13px; color: #8a8f9c">page background, near-black</div>
+      </div>
+      <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #767c8e; text-align: right">#0b0b0d</div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 120px 1fr 130px; gap: 24px; align-items: center; padding: 16px 0; border-bottom: 1px solid #24242b">
+      <div style="height: 52px; background: #050506; border: 1px solid #24242b"></div>
+      <div style="display: flex; flex-direction: column; gap: 2px">
+        <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #ece9e2">--ink</div>
+        <div style="font-size: 13px; color: #8a8f9c">deepest black — KABOOM contrast blocks</div>
+      </div>
+      <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #767c8e; text-align: right">#050506</div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 120px 1fr 130px; gap: 24px; align-items: center; padding: 16px 0; border-bottom: 1px solid #24242b">
+      <div style="height: 52px; background: #131318; border: 1px solid #24242b"></div>
+      <div style="display: flex; flex-direction: column; gap: 2px">
+        <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #ece9e2">--panel</div>
+        <div style="font-size: 13px; color: #8a8f9c">raised surfaces, overlays</div>
+      </div>
+      <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #767c8e; text-align: right">#131318</div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 120px 1fr 130px; gap: 24px; align-items: center; padding: 16px 0; border-bottom: 1px solid #24242b">
+      <div style="height: 52px; background: #ece9e2"></div>
+      <div style="display: flex; flex-direction: column; gap: 2px">
+        <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #ece9e2">--bone</div>
+        <div style="font-size: 13px; color: #8a8f9c">headings + primary text</div>
+      </div>
+      <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #767c8e; text-align: right">#ece9e2</div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 120px 1fr 130px; gap: 24px; align-items: center; padding: 16px 0; border-bottom: 1px solid #24242b">
+      <div style="height: 52px; background: #8a8f9c"></div>
+      <div style="display: flex; flex-direction: column; gap: 2px">
+        <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #ece9e2">--dim</div>
+        <div style="font-size: 13px; color: #8a8f9c">body copy, metadata — AA on --void</div>
+      </div>
+      <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #767c8e; text-align: right">#8a8f9c</div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 120px 1fr 130px; gap: 24px; align-items: center; padding: 16px 0; border-bottom: 1px solid #24242b">
+      <div style="height: 52px; background: #767c8e"></div>
+      <div style="display: flex; flex-direction: column; gap: 2px">
+        <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #ece9e2">--muted</div>
+        <div style="font-size: 13px; color: #8a8f9c">inactive / "soon" text — still AA</div>
+      </div>
+      <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #767c8e; text-align: right">#767c8e</div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 120px 1fr 130px; gap: 24px; align-items: center; padding: 16px 0; border-bottom: 1px solid #24242b">
+      <div style="height: 52px; background: #24242b"></div>
+      <div style="display: flex; flex-direction: column; gap: 2px">
+        <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #ece9e2">--line</div>
+        <div style="font-size: 13px; color: #8a8f9c">hairline rules</div>
+      </div>
+      <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #767c8e; text-align: right">#24242b</div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 120px 1fr 130px; gap: 24px; align-items: center; padding: 16px 0; border-bottom: 1px solid #24242b">
+      <div style="height: 52px; background: #3a3b45"></div>
+      <div style="display: flex; flex-direction: column; gap: 2px">
+        <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #ece9e2">--line-hover</div>
+        <div style="font-size: 13px; color: #8a8f9c">rule on row hover</div>
+      </div>
+      <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #767c8e; text-align: right">#3a3b45</div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 120px 1fr 130px; gap: 24px; align-items: center; padding: 16px 0; border-bottom: 1px solid #24242b">
+      <div style="height: 52px; background: #b3000e"></div>
+      <div style="display: flex; flex-direction: column; gap: 2px">
+        <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #ece9e2">--crimson-deep</div>
+        <div style="font-size: 13px; color: #8a8f9c">pressed / shadow variant</div>
+      </div>
+      <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #767c8e; text-align: right">#b3000e</div>
+    </div>
+
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 18px; border-top: 1px solid #24242b; padding-top: 32px">
+    <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #4aa5ff">Placeholder swatches</div>
+    <p style="font-size: 13px; color: #8a8f9c; margin: 0; max-width: 60ch">
+      Stand-ins for pixels until real images exist — used by the work-list preview, sketch tiles and case-study media.
+    </p>
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px">
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <div style="height: 84px; background: repeating-linear-gradient(115deg, #1b1030 0 3px, #2b0a3d 3px 6px); border: 1px solid #24242b"></div>
+        <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: #767c8e">.sw-1</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <div style="height: 84px; background: repeating-linear-gradient(0deg, #1a1b1f 0 2px, #0e0f12 2px 5px); border: 1px solid #24242b"></div>
+        <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: #767c8e">.sw-2</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <div style="height: 84px; background: repeating-linear-gradient(45deg, #0b2530 0 2px, #06161d 2px 4px); border: 1px solid #24242b"></div>
+        <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: #767c8e">.sw-3</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <div style="height: 84px; background: repeating-linear-gradient(90deg, #201a14 0 6px, #14100c 6px 12px); border: 1px solid #24242b"></div>
+        <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: #767c8e">.sw-4</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

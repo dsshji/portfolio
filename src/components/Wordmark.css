@@ -1,0 +1,199 @@
+.wordmark {
+  position: fixed;
+  top: 22px;
+  left: var(--gutter);
+  z-index: 210;
+  display: inline-flex;
+  align-items: center;
+  /* same face/weight/tracking as the page headings */
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--bone); /* bone, matching headings — not pure white */
+  padding: 10px 2px;
+  min-height: 44px;
+}
+.wordmark-text {
+  position: relative;
+  display: inline-block;
+}
+
+/* two colored ghost copies of the name, used only while glitching */
+.wordmark-text::before,
+.wordmark-text::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+.wordmark-text::before {
+  color: var(--g1, #ff2d95); /* accent, picked per glitch in Wordmark.tsx */
+}
+.wordmark-text::after {
+  color: var(--g2, #4aa5ff);
+}
+
+/* ── appear from glitch (once, on load) ── */
+.wordmark--in .wordmark-text {
+  animation: wm-appear 0.9s steps(1) both;
+}
+.wordmark--in .wordmark-text::before {
+  animation: wm-ghost-a 0.9s steps(1) both;
+}
+.wordmark--in .wordmark-text::after {
+  animation: wm-ghost-b 0.9s steps(1) both;
+}
+@keyframes wm-appear {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+    clip-path: inset(0 0 70% 0);
+    transform: translateX(-4px);
+  }
+  20% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+    clip-path: inset(40% 0 20% 0);
+    transform: translateX(5px);
+  }
+  42% {
+    opacity: 0.4;
+    clip-path: inset(0);
+    transform: none;
+  }
+  52% {
+    opacity: 1;
+    clip-path: inset(65% 0 0 0);
+    transform: translateX(-3px);
+  }
+  64% {
+    opacity: 0;
+  }
+  74% {
+    opacity: 1;
+    clip-path: inset(0 0 40% 0);
+    transform: translateX(2px);
+  }
+  86%,
+  100% {
+    opacity: 1;
+    clip-path: inset(0);
+    transform: none;
+  }
+}
+@keyframes wm-ghost-a {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.9;
+    transform: translate(-6px, 1px);
+    clip-path: inset(10% 0 55% 0);
+  }
+  34% {
+    opacity: 0.9;
+    transform: translate(5px, -1px);
+    clip-path: inset(50% 0 10% 0);
+  }
+  58% {
+    opacity: 0.8;
+    transform: translate(-4px, 0);
+    clip-path: inset(0 0 70% 0);
+  }
+  80% {
+    opacity: 0;
+  }
+}
+@keyframes wm-ghost-b {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  18% {
+    opacity: 0.9;
+    transform: translate(6px, -1px);
+    clip-path: inset(55% 0 5% 0);
+  }
+  40% {
+    opacity: 0.9;
+    transform: translate(-5px, 1px);
+    clip-path: inset(15% 0 50% 0);
+  }
+  66% {
+    opacity: 0.8;
+    transform: translate(4px, 0);
+    clip-path: inset(70% 0 0 0);
+  }
+  84% {
+    opacity: 0;
+  }
+}
+
+/* ── occasional glitch burst (class toggled from JS) ── */
+.wordmark.is-glitching .wordmark-text {
+  animation: wm-burst 0.38s steps(1);
+}
+.wordmark.is-glitching .wordmark-text::before {
+  animation: wm-ghost-a 0.38s steps(1);
+}
+.wordmark.is-glitching .wordmark-text::after {
+  animation: wm-ghost-b 0.38s steps(1);
+}
+@keyframes wm-burst {
+  0% {
+    transform: none;
+    clip-path: inset(0);
+  }
+  20% {
+    transform: translateX(-3px);
+    clip-path: inset(0 0 55% 0);
+  }
+  40% {
+    transform: translateX(3px);
+    clip-path: inset(45% 0 0 0);
+  }
+  60% {
+    transform: translateX(-2px);
+    clip-path: inset(0 0 30% 0);
+  }
+  80% {
+    transform: translateX(1px);
+    clip-path: inset(0);
+  }
+  100% {
+    transform: none;
+    clip-path: inset(0);
+  }
+}
+
+/* small "← work" link under the name on case-study pages */
+.wordmark-back {
+  position: fixed;
+  top: 62px;
+  left: var(--gutter);
+  z-index: 210;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--dim);
+  padding: 8px 2px;
+  transition: color 0.2s var(--ease);
+}
+.wordmark-back:hover {
+  color: var(--bone);
+}
+
+/* hidden whenever the menu overlay is open (class set by Menu.tsx) */
+body.menu-open .wordmark,
+body.menu-open .wordmark-back {
+  opacity: 0;
+  pointer-events: none;
+}

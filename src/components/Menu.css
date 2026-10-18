@@ -1,0 +1,125 @@
+/* ── the collapsible trigger — a small icon fixed in the corner ── */
+.menu-btn {
+  position: fixed;
+  top: 22px;
+  right: var(--gutter);
+  z-index: 210;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding: 10px;
+  display: grid;
+  place-items: center;
+}
+.menu-ico {
+  position: relative;
+  width: 22px;
+  height: 12px;
+}
+.menu-ico span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background: var(--dim);
+  transition: transform 0.3s var(--ease-snap), background 0.2s var(--ease),
+    width 0.3s var(--ease-snap);
+}
+.menu-ico span:first-child {
+  top: 2px;
+}
+.menu-ico span:last-child {
+  bottom: 2px;
+  width: 70%; /* slightly offset lengths — quieter, less "hamburger" */
+}
+.menu-btn:hover .menu-ico span {
+  background: var(--bone);
+  width: 100%;
+}
+/* morph into an X when open */
+.menu-btn.is-open .menu-ico span {
+  background: var(--bone);
+  width: 100%;
+  top: 5px;
+  bottom: auto;
+}
+.menu-btn.is-open .menu-ico span:first-child {
+  transform: rotate(45deg);
+}
+.menu-btn.is-open .menu-ico span:last-child {
+  transform: rotate(-45deg);
+}
+
+/* ── the full-screen overlay ── */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(5, 5, 6, 0.97); /* --ink @ 97% */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 12vh var(--gutter);
+  /* a faint diagonal crimson wash — Persona texture, kept subtle */
+  background-image: repeating-linear-gradient(
+    115deg,
+    rgba(230, 0, 18, 0.05) 0 2px,
+    transparent 2px 22px
+  );
+}
+
+.menu-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.menu-link {
+  font-family: var(--font-body);
+  font-size: clamp(38px, 9vw, 92px);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  /* each link is its own accent color (rainbow, like the orbit birds),
+     a touch dimmed until hover */
+  color: var(--c);
+  opacity: 0.72;
+  width: max-content;
+  max-width: 100%;
+  transform: skewX(var(--slant));
+  transition: opacity 0.2s var(--ease-snap), transform 0.3s var(--ease-snap);
+  /* staggered entrance, ordered by --i */
+  animation: menu-in 0.4s var(--ease-snap) backwards;
+  animation-delay: calc(var(--i, 0) * 55ms);
+}
+.menu-link:hover,
+.menu-link:focus-visible {
+  opacity: 1;
+  transform: skewX(var(--slant)) translateX(18px);
+  outline: none;
+}
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: skewX(var(--slant)) translateX(-30px);
+  }
+}
+
+.menu-social {
+  margin-top: 8vh;
+  display: flex;
+  gap: 22px;
+}
+.menu-social a {
+  color: var(--dim);
+  padding: 8px 2px;
+  transition: color 0.2s var(--ease);
+}
+.menu-social a:hover {
+  color: var(--c);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-link {
+    animation: none;
+  }
+}

@@ -1,0 +1,160 @@
+/* ═══════════════════════════════════════════════════════════════
+   HERO STAGE — the shell around the 3D head. The stage, caption, hint,
+   and marker layer are preserved from the demo so the real R3F head
+   drops straight in. Only the *contents* of the stage are a placeholder
+   right now. Marker/callout styles are kept here (commented as the
+   projected-callout layer) for when the owner wires the interior.
+   ═══════════════════════════════════════════════════════════════ */
+
+.stage {
+  position: relative;
+  height: 64vh;
+  min-height: 400px;
+  margin-bottom: 2vh;
+}
+
+/* The placeholder fill — a quiet dashed frame that says "head goes here".
+   Deliberately understated; it is not decoration to keep (brief §2). */
+.stage-placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  border: 1px dashed var(--line);
+  border-radius: 2px;
+  color: var(--dim);
+  text-align: center;
+}
+.stage-placeholder .ph-title {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--signal); /* cyan = the machine/interior accent */
+}
+.stage-placeholder .ph-note {
+  margin-top: 10px;
+  max-width: 40ch;
+  font-size: 13px;
+  color: var(--dim);
+}
+
+/* caption pinned bottom-left, as in the demo */
+.stage-caption {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  pointer-events: none;
+  z-index: 4;
+}
+.stage-caption .role {
+  font-size: 17px;
+  letter-spacing: -0.015em;
+}
+
+/* the drifting "look inside" hint, bottom-right */
+.hint {
+  position: absolute;
+  right: 0;
+  bottom: 4px;
+  animation: drift 3s var(--ease) infinite;
+  z-index: 4;
+}
+@keyframes drift {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+/* ── PRESERVED: projected-callout layer (brief §5.5) ──────────────
+   The marker dots + HTML callouts are positioned by projecting each
+   interior component's 3D world position to screen px every frame.
+   Structure/styles kept so the owner's R3F hero can reuse them
+   verbatim. Hidden until the real hero populates .markers. */
+.markers {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+.marker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  width: 7px;
+  height: 7px;
+  border: 1px solid var(--signal);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.4s var(--ease), background 0.3s var(--ease);
+}
+.marker.vis {
+  opacity: 0.55;
+}
+.marker.hot {
+  opacity: 1;
+  background: var(--signal);
+}
+.callout {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-left: 46px;
+  opacity: 0;
+  transform: translateY(2px);
+  transition: opacity 0.3s var(--ease), transform 0.4s var(--ease);
+  white-space: nowrap;
+}
+.callout.on {
+  opacity: 1;
+  transform: translateY(0);
+}
+.callout::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 50%;
+  width: 34px;
+  height: 1px;
+  background: var(--signal);
+}
+.callout .part {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--signal);
+  text-transform: uppercase;
+}
+.callout .spec {
+  font-size: 13px;
+  color: var(--bone);
+}
+.callout .sub {
+  font-size: 12px;
+  color: var(--dim);
+}
+
+/* mobile: shrink the stage; callouts/preview are hover-only so hidden (§9) */
+@media (max-width: 620px) {
+  .stage {
+    height: 44vh;
+    min-height: 260px;
+  }
+  .callout {
+    display: none;
+  }
+  /* the "move right to look inside" hint is a hover/cursor concept — it
+     means nothing on touch and would collide with the caption. Hide it;
+     mobile relies on idle drift + tap-to-look instead (brief §9). */
+  .hint {
+    display: none;
+  }
+}

@@ -1,0 +1,48 @@
+/* ═══════════════════════════════════════════════════════════════
+   DESIGN TOKENS — single source of truth.
+
+   Direction (v2): a CALM, spacious, near-black canvas with ONE loud
+   focal point (the orbital tiger hero). Persona-5 energy: crimson is
+   the loud interactive accent; the hero art carries the color riot.
+
+   Accent roles — keep them disciplined so "loud" stays meaningful:
+     · --crimson  PRIMARY. links, hover, focus, KABOOM menu + accents
+     · --ember    the tiger; warmth; the sketch framework tag
+     · --signal   the machine / hero internals ONLY (cyan)
+   The orbiting "birds" get their own multicolor set (see data/orbit.ts)
+   and are the one place many colors are allowed.
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  /* canvas */
+  --void: #0b0b0d; /* page background, near-black */
+  --ink: #050506; /* deepest black — KABOOM contrast blocks */
+  --panel: #131318; /* raised surfaces, overlays */
+  --bone: #ece9e2; /* headings + primary text */
+  --dim: #8a8f9c; /* body copy, metadata — AA on --void */
+  --muted: #767c8e; /* inactive / "soon" text — still AA */
+  --line: #24242b; /* hairline rules */
+  --line-hover: #3a3b45;
+
+  /* accents */
+  --crimson: #e60012; /* PRIMARY loud accent (Persona-5 red) */
+  --crimson-deep: #b3000e; /* pressed / shadow variant */
+  --ember: #ff7a18; /* the tiger; warmth; sketch framework tag */
+  --signal: #00e5ff; /* the machine / hero internals only */
+
+  /* type */
+  --font-body: 'Archivo', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* motion */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-snap: cubic-bezier(0.2, 0.9, 0.1, 1); /* snappier — KABOOM moments */
+
+  /* layout rhythm */
+  --measure: 1100px;
+  --gutter: 6vw;
+  --section-gap: 15vh;
+
+  /* the P5 slant — reused for angular tags/accents */
+  --slant: -8deg;
+}

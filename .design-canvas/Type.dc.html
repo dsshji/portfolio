@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap">
+  <style>
+    body { margin: 0; background: #0b0b0d; color: #ece9e2;
+           font-family: 'Archivo', system-ui, sans-serif; font-size: 15px; line-height: 1.6; }
+    a { color: #e60012; text-decoration: none; }
+    a:hover { color: #ff7a18; }
+  </style>
+</helmet>
+
+<div style="padding: 56px 48px; display: flex; flex-direction: column; gap: 40px">
+
+  <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.04em; color: #8a8f9c; position: relative; padding-left: 16px; border-bottom: 1px solid #24242b; padding-bottom: 10px">
+    <span style="position: absolute; left: 0; top: 40%; width: 6px; height: 14px; background: #3ddc84; transform: translateY(-50%) skewX(-8deg)"></span>
+    TYPE SCALE
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px">
+    <div style="border: 1px solid #24242b; padding: 22px; display: flex; flex-direction: column; gap: 8px">
+      <div style="font-size: 30px; font-weight: 500; letter-spacing: -0.02em">Archivo</div>
+      <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #8a8f9c">--font-body · 400, 500</div>
+      <div style="font-size: 13px; color: #8a8f9c; line-height: 1.5">Headings and body copy. Everything readable.</div>
+    </div>
+    <div style="border: 1px solid #24242b; padding: 22px; display: flex; flex-direction: column; gap: 8px">
+      <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 30px; font-weight: 500">JetBrains Mono</div>
+      <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #8a8f9c">--font-mono · 400, 500</div>
+      <div style="font-size: 13px; color: #ff7a18; line-height: 1.5">DATA ONLY — never body copy.</div>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 0; border-top: 1px solid #24242b">
+
+    <div style="display: grid; grid-template-columns: 1fr 220px; gap: 32px; align-items: baseline; padding: 26px 0; border-bottom: 1px solid #24242b">
+      <div style="font-size: 72px; font-weight: 500; letter-spacing: -0.03em; line-height: 1.02">Page heading</div>
+      <div style="display: flex; flex-direction: column; gap: 3px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: #767c8e">
+        <div style="color: #8a8f9c">.page-head h1</div>
+        <div>clamp(38px, 8vw, 72px)</div>
+        <div>500 · -0.03em · 1.02</div>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 220px; gap: 32px; align-items: baseline; padding: 26px 0; border-bottom: 1px solid #24242b">
+      <div style="font-size: 60px; font-weight: 500; letter-spacing: -0.03em; line-height: 1.02">Case-study title</div>
+      <div style="display: flex; flex-direction: column; gap: 3px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: #767c8e">
+        <div style="color: #8a8f9c">.case h1</div>
+        <div>clamp(32px, 7vw, 60px)</div>
+        <div>500 · -0.03em · 1.02</div>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 220px; gap: 32px; align-items: baseline; padding: 26px 0; border-bottom: 1px solid #24242b">
+      <div style="font-size: 92px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.02; color: #ff2d95; transform: skewX(-8deg); width: max-content">Menu link</div>
+      <div style="display: flex; flex-direction: column; gap: 3px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: #767c8e">
+        <div style="color: #8a8f9c">.menu-link</div>
+        <div>clamp(38px, 9vw, 92px)</div>
+        <div>500 · -0.02em · skewX(-8deg)</div>
+        <div>own accent, 0.72 opacity</div>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 220px; gap: 32px; align-items: baseline; padding: 26px 0; border-bottom: 1px solid #24242b">
+      <div style="font-size: 26px; letter-spacing: -0.02em; line-height: 1.2">Work row title</div>
+      <div style="display: flex; flex-direction: column; gap: 3px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: #767c8e">
+        <div style="color: #8a8f9c">.row .title</div>
+        <div>26px · -0.02em · 1.2</div>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 220px; gap: 32px; align-items: baseline; padding: 26px 0; border-bottom: 1px solid #24242b">
+      <div style="font-size: 18px; color: #ece9e2; max-width: 52ch">Case summary — the one-sentence version, set larger than body and kept to 52 characters per line.</div>
+      <div style="display: flex; flex-direction: column; gap: 3px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: #767c8e">
+        <div style="color: #8a8f9c">.case .summary</div>
+        <div>18px · --bone · 52ch</div>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 220px; gap: 32px; align-items: baseline; padding: 26px 0; border-bottom: 1px solid #24242b">
+      <div style="font-size: 16px; color: #8a8f9c; max-width: 54ch">Lede — the intro paragraph under a page heading, dimmed and capped at 54 characters per line.</div>
+      <div style="display: flex; flex-direction: column; gap: 3px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: #767c8e">
+        <div style="color: #8a8f9c">.lede / .section-intro</div>
+        <div>16px · --dim · 54ch</div>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 220px; gap: 32px; align-items: baseline; padding: 26px 0; border-bottom: 1px solid #24242b">
+      <div style="font-size: 15px; color: #ece9e2; max-width: 62ch; line-height: 1.6">Body — 15px at 1.6, the page default. Prose columns cap at 62ch so a line never outruns the eye.</div>
+      <div style="display: flex; flex-direction: column; gap: 3px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: #767c8e">
+        <div style="color: #8a8f9c">body</div>
+        <div>15px · 1.6 · --bone</div>
+        <div>.prose max 62ch</div>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 220px; gap: 32px; align-items: baseline; padding: 26px 0; border-bottom: 1px solid #24242b">
+      <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.04em; color: #8a8f9c">MONO LABEL — metadata, years, stacks</div>
+      <div style="display: flex; flex-direction: column; gap: 3px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: #767c8e">
+        <div style="color: #8a8f9c">.mono</div>
+        <div>12px · 0.04em · --dim</div>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 220px; gap: 32px; align-items: baseline; padding: 26px 0; border-bottom: 1px solid #24242b">
+      <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #b06bff">SECTION KICKER</div>
+      <div style="display: flex; flex-direction: column; gap: 3px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: #767c8e">
+        <div style="color: #8a8f9c">.case h2 / .cv-section h2</div>
+        <div>12px · 500 · 0.08em · upper</div>
+        <div>takes --page accent</div>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 220px; gap: 32px; align-items: baseline; padding: 26px 0">
+      <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.06em; color: #ece9e2; background: rgba(11, 13, 18, 0.66); padding: 2px 5px; width: max-content">TILE CHIP · 2024</div>
+      <div style="display: flex; flex-direction: column; gap: 3px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: #767c8e">
+        <div style="color: #8a8f9c">.tile-date / .tile-open</div>
+        <div>10px · 0.06em</div>
+        <div>dark chip for legibility</div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

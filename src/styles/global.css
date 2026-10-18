@@ -1,0 +1,239 @@
+/* ═══════════════════════════════════════════════════════════════
+   GLOBAL / BASE — reset, page shell, and the shared primitives that
+   recur across routes (mono labels, section headers, hairline rows).
+   Component-specific styling lives next to each component as a .css
+   module-ish file; this holds only what is genuinely global.
+   Ported from tiger-cutaway.html; structure preserved (brief §3).
+   ═══════════════════════════════════════════════════════════════ */
+
+@import './tokens.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--void);
+  color: var(--bone);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Visible focus ring — cyan, per brief §9. Applies to every focusable. */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--crimson);
+  outline-offset: 3px;
+}
+/* <main> is focused programmatically on route change (for screen-readers);
+   it's not a user control, so don't draw a focus box around the whole page */
+#main:focus,
+#main:focus-visible {
+  outline: none;
+}
+
+/* Skip link — keyboard users jump past the nav/hero straight to content. */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: 10px 16px;
+  background: var(--panel);
+  color: var(--bone);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+.skip-link:focus {
+  left: var(--gutter);
+  top: 12px;
+}
+
+/* ── shared: the single centered column ── */
+.wrap {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 0 var(--gutter) 12vh;
+  /* fill the viewport so the footer anchors to the bottom on short pages
+     and content isn't stranded at the top */
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+}
+.wrap > #main {
+  flex: 1 0 auto;
+}
+/* home: a single full-viewport screen that must NOT scroll (desktop).
+   The orbit stage is position:fixed, so this wrapper just holds the line. */
+.wrap--home {
+  padding-bottom: 0;
+  height: 100svh;
+  min-height: 0;
+  overflow: hidden;
+}
+/* mobile: the orbit becomes a scrolling list, so let the page scroll */
+@media (max-width: 620px) {
+  .wrap--home {
+    height: auto;
+    min-height: 100svh;
+    overflow: visible;
+  }
+}
+
+/* top-left home button (interior pages) — mirrors the menu trigger */
+.home-link {
+  position: fixed;
+  top: 22px;
+  left: var(--gutter);
+  z-index: 210;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--dim);
+  padding: 10px 2px;
+  transition: color 0.2s var(--ease);
+}
+.home-link:hover {
+  color: var(--bone);
+}
+
+/* ── shared: monospace is for DATA ONLY, never body copy (brief §3) ── */
+.mono {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--dim);
+}
+
+/* ── shared: section rhythm ── */
+section {
+  margin-top: var(--section-gap);
+}
+section:first-of-type {
+  margin-top: 8vh;
+}
+
+/* ── shared: the label row that heads every section ── */
+.label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 10px;
+  margin-bottom: 4px;
+}
+/* Section labels are real <h2>s (for the screen-reader heading outline) but
+   must LOOK like the quiet mono kicker — so cancel the browser's bold/large
+   h2 defaults. Pair with `.mono` on the element for font + color. */
+.section-head {
+  font-weight: 400;
+  font-size: 12px; /* re-assert over the UA h2 size, in case .mono is dropped */
+  margin: 0;
+  position: relative;
+  padding-left: 16px;
+  /* label text takes the page's accent color (set via --page on the page
+     wrapper). Falls back to blue so it's never bland/uncolored. */
+  color: var(--page, #4aa5ff);
+}
+/* a slanted accent slash before every section label */
+.section-head::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 6px;
+  height: 14px;
+  background: var(--page, #4aa5ff);
+  transform: translateY(-50%) skewX(var(--slant));
+}
+
+/* mono links that pop crimson on hover (e.g. section "all →") */
+.link-accent {
+  transition: color 0.2s var(--ease-snap);
+}
+.link-accent:hover {
+  color: var(--crimson);
+}
+
+/* ── page heading used on interior routes (/work, /cv, etc.) ── */
+.page-head {
+  padding-top: max(12vh, 100px); /* airy top; floor clears the fixed name */
+  margin-bottom: 12vh;
+}
+.page-head h1 {
+  font-size: clamp(38px, 8vw, 72px);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+}
+.page-head .lede {
+  margin-top: 14px;
+  max-width: 54ch;
+  color: var(--dim);
+  font-size: 16px;
+}
+
+/* Short intro paragraph sitting under a section label (e.g. the Home
+   "About" strip). Kept in CSS rather than inline styles so the spacing
+   system stays enforceable. */
+.section-intro {
+  max-width: 54ch;
+  margin-top: 14px;
+  color: var(--dim);
+}
+
+/* Utility: screen-reader-only text (accessible name without visual noise) */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Utility: back link on interior pages */
+.back-link {
+  display: inline-block;
+  margin-top: 6vh;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--dim);
+  transition: color 0.25s var(--ease);
+}
+.back-link:hover {
+  color: var(--page, #4aa5ff);
+}
+
+/* ═══ reduced motion: kill all transitions/animations globally (brief §9) ═══
+   Individual components ALSO guard behavior in JS, but this is the blanket
+   CSS safety net. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}

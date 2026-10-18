@@ -1,0 +1,14 @@
+/* /about — long-form prose. Replaces the former inline styles so the
+   type/spacing lives in the design system, not in the component. */
+.about-prose {
+  max-width: 64ch;
+  font-size: 16px;
+}
+.about-prose p {
+  color: var(--dim);
+  margin-bottom: 1.2em;
+}
+/* lead paragraph reads brighter (--bone) to anchor the page */
+.about-prose p:first-child {
+  color: var(--bone);
+}

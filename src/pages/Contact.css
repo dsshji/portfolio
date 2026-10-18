@@ -1,0 +1,63 @@
+.contact-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 14px 0; /* compact so all four fit without scrolling */
+  border-bottom: 1px solid var(--line);
+  /* each link is its own accent color */
+  color: var(--c);
+  transition: border-color 0.3s var(--ease);
+}
+.contact-link:hover,
+.contact-link:focus-visible {
+  border-color: var(--c);
+}
+.contact-dot {
+  flex: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--c);
+  box-shadow: 0 0 14px 0 var(--c);
+  transition: transform 0.3s var(--ease-snap);
+}
+.contact-label {
+  font-size: clamp(30px, 5.2vw, 55px);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  transition: transform 0.4s var(--ease);
+}
+.contact-arrow {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  opacity: 0.5;
+  transition: opacity 0.25s var(--ease), transform 0.3s var(--ease-snap);
+}
+.contact-link:hover .contact-dot,
+.contact-link:focus-visible .contact-dot {
+  transform: scale(1.5);
+}
+.contact-link:hover .contact-label,
+.contact-link:focus-visible .contact-label {
+  transform: translateX(12px);
+}
+.contact-link:hover .contact-arrow,
+.contact-link:focus-visible .contact-arrow {
+  opacity: 1;
+  transform: translate(3px, -3px);
+}
+
+/* tighter header + footer gap on this page so everything fits one screen */
+.contact-page .page-head {
+  margin-bottom: 5vh;
+}
+.contact-page .page-head h1 {
+  font-size: clamp(32px, 5vw, 52px);
+}

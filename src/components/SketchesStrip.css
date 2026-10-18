@@ -1,0 +1,135 @@
+/* ═══════════════════════════════════════════════════════════════
+   SKETCHES GALLERY — asymmetric flex-wrap; each tile is its sketch's
+   native width (capped to the column), keeping native aspect ratio.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* asymmetric masonry: fixed-ish column width, tiles keep their native
+   aspect ratio so heights vary and multiple pack per row */
+.gallery {
+  columns: 300px;
+  column-gap: 22px;
+  margin-top: 6px;
+}
+
+.sketch-item {
+  width: 100%;
+  margin: 0 0 22px;
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+}
+
+.tile {
+  display: block;
+  position: relative;
+  width: 100%;
+  aspect-ratio: var(--ar);
+  border: 1px solid var(--line);
+  overflow: hidden;
+  /* full color always — no gray mask */
+  transition: border-color 0.35s var(--ease), transform 0.35s var(--ease-snap);
+}
+.tile:hover,
+.tile:focus-visible {
+  border-color: var(--line-hover);
+  transform: translateY(-3px);
+}
+
+/* live p5 embed — rendered at native size, scaled to fit the tile width.
+   pointer-events off so a click falls through to the wrapping <a>. */
+.tile-embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 0;
+  pointer-events: auto; /* interactive — clickable buttons / click-to-change */
+  background: var(--panel);
+  transform-origin: top left;
+  transform: scale(var(--embed-scale, 1));
+}
+
+/* muted looping video / image cover (camera sketches) */
+.tile-cover {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+/* camera sketch with no cover yet */
+.tile-cam {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+/* plain green placeholder cover (temporary — real video dropped in later) */
+.tile-cam--green {
+  background: #3ddc84;
+}
+.tile-cam-note {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(5, 6, 8, 0.65); /* dark label, legible on green */
+}
+
+/* date (bottom-left) + framework (bottom-right) chips */
+.tile .tile-date,
+.tile .tile-framework,
+.tile .tile-hint,
+.tile .tile-open {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  padding: 2px 5px;
+  background: rgba(11, 13, 18, 0.66);
+}
+.tile .tile-date {
+  bottom: 6px;
+  left: 6px;
+  color: var(--bone);
+}
+.tile .tile-framework {
+  bottom: 6px;
+  right: 6px;
+  color: var(--ember);
+}
+/* little hint ("click", "buttons clickable") top-left */
+.tile .tile-hint {
+  top: 6px;
+  left: 6px;
+  color: var(--signal);
+  text-transform: uppercase;
+}
+/* "open on p5" link top-right — above the iframe, always clickable */
+.tile .tile-open {
+  top: 6px;
+  right: 6px;
+  z-index: 2;
+  color: var(--signal);
+  opacity: 0.6;
+  transition: opacity 0.25s var(--ease);
+}
+.tile:hover .tile-open,
+.tile .tile-open:focus-visible {
+  opacity: 1;
+}
+
+/* caption under each tile */
+.sketch-item .tile-caption {
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--dim);
+  max-width: 46ch;
+}
+
+/* mobile: single column */
+@media (max-width: 620px) {
+  .gallery {
+    columns: 1;
+  }
+}

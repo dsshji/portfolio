@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap">
+  <style>
+    body { margin: 0; background: #0b0b0d; color: #ece9e2;
+           font-family: 'Archivo', system-ui, sans-serif; font-size: 15px; line-height: 1.6; }
+    a { color: #e60012; text-decoration: none; }
+    a:hover { color: #ff7a18; }
+    .kicker { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px;
+              letter-spacing: 0.08em; text-transform: uppercase; color: #b06bff; }
+    .note { font-size: 13px; color: #8a8f9c; margin: 0; max-width: 62ch; line-height: 1.5; }
+    .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #767c8e; }
+    .tok { display: grid; grid-template-columns: 150px 1fr; gap: 20px; align-items: baseline;
+           padding: 12px 0; border-bottom: 1px solid #24242b; }
+  </style>
+</helmet>
+
+<div style="padding: 56px 48px; display: flex; flex-direction: column; gap: 46px">
+
+  <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.04em; color: #8a8f9c; position: relative; padding-left: 16px; border-bottom: 1px solid #24242b; padding-bottom: 10px">
+    <span style="position: absolute; left: 0; top: 40%; width: 6px; height: 14px; background: #b06bff; transform: translateY(-50%) skewX(-8deg)"></span>
+    PATTERNS
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px">
+
+    <div style="display: flex; flex-direction: column; gap: 16px">
+      <div class="kicker">Layout rhythm</div>
+      <div style="display: flex; flex-direction: column">
+        <div class="tok"><span class="mono" style="color: #ece9e2">--measure</span><span><span style="font-size: 14px">1100px</span> <span class="note" style="display: block">the single centered column</span></span></div>
+        <div class="tok"><span class="mono" style="color: #ece9e2">--gutter</span><span><span style="font-size: 14px">6vw</span> <span class="note" style="display: block">side padding, scales with viewport</span></span></div>
+        <div class="tok"><span class="mono" style="color: #ece9e2">--section-gap</span><span><span style="font-size: 14px">15vh</span> <span class="note" style="display: block">between sections; 8vh for the first</span></span></div>
+        <div class="tok"><span class="mono" style="color: #ece9e2">--slant</span><span><span style="font-size: 14px">-8deg</span> <span class="note" style="display: block">the P5 skew — tags, menu links, label slashes</span></span></div>
+      </div>
+      <p class="note" style="margin-top: 6px">Interior pages open with 12vh of air above the heading and 10–12vh below it. Breakpoint is a single <span class="mono" style="color: #ece9e2">620px</span> — grids collapse to one column, hover-only affordances disappear.</p>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 16px">
+      <div class="kicker">Motion</div>
+      <div style="display: flex; flex-direction: column">
+        <div class="tok"><span class="mono" style="color: #ece9e2">--ease</span><span><span class="mono" style="font-size: 11px">cubic-bezier(0.22, 1, 0.36, 1)</span> <span class="note" style="display: block">the default — most transitions</span></span></div>
+        <div class="tok"><span class="mono" style="color: #ece9e2">--ease-snap</span><span><span class="mono" style="font-size: 11px">cubic-bezier(0.2, 0.9, 0.1, 1)</span> <span class="note" style="display: block">snappier — KABOOM moments</span></span></div>
+      </div>
+      <p class="note" style="margin-top: 6px">Durations sit between 0.2s and 0.5s: 0.2–0.25s for color, 0.3–0.35s for borders and opacity, 0.45s for the title slide. Menu links stagger in at 55ms per item.</p>
+    </div>
+
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 18px; border-top: 1px solid #24242b; padding-top: 34px">
+    <div class="kicker">Per-page accent — <span style="text-transform: none; letter-spacing: 0; font-family: 'JetBrains Mono', ui-monospace, monospace">--page</span></div>
+    <p class="note">Each route sets <span class="mono" style="color: #ece9e2">--page</span> on its wrapper. Section labels, kickers, back-links and case-study links inherit it, so a page reads as one color without any of them hard-coding a hex. Crimson stays reserved for interaction; these are identity.</p>
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px">
+
+      <div style="border: 1px solid #24242b; padding: 18px; display: flex; flex-direction: column; gap: 12px">
+        <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #4aa5ff; position: relative; padding-left: 14px">
+          <span style="position: absolute; left: 0; top: 45%; width: 6px; height: 13px; background: #4aa5ff; transform: translateY(-50%) skewX(-8deg)"></span>
+          WORK
+        </div>
+        <div class="mono" style="font-size: 11px">#4aa5ff</div>
+      </div>
+
+      <div style="border: 1px solid #24242b; padding: 18px; display: flex; flex-direction: column; gap: 12px">
+        <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #3ddc84; position: relative; padding-left: 14px">
+          <span style="position: absolute; left: 0; top: 45%; width: 6px; height: 13px; background: #3ddc84; transform: translateY(-50%) skewX(-8deg)"></span>
+          SKETCHES
+        </div>
+        <div class="mono" style="font-size: 11px">#3ddc84</div>
+      </div>
+
+      <div style="border: 1px solid #24242b; padding: 18px; display: flex; flex-direction: column; gap: 12px">
+        <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #b06bff; position: relative; padding-left: 14px">
+          <span style="position: absolute; left: 0; top: 45%; width: 6px; height: 13px; background: #b06bff; transform: translateY(-50%) skewX(-8deg)"></span>
+          CV
+        </div>
+        <div class="mono" style="font-size: 11px">#b06bff</div>
+      </div>
+
+      <div style="border: 1px solid #24242b; padding: 18px; display: flex; flex-direction: column; gap: 12px">
+        <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #ffd000; position: relative; padding-left: 14px">
+          <span style="position: absolute; left: 0; top: 45%; width: 6px; height: 13px; background: #ffd000; transform: translateY(-50%) skewX(-8deg)"></span>
+          ABOUT
+        </div>
+        <div class="mono" style="font-size: 11px">#ffd000</div>
+      </div>
+
+    </div>
+    <p class="note" style="color: #767c8e">Route → color pairings are illustrative — the fallback in CSS is <span class="mono" style="color: #8a8f9c">#4aa5ff</span>; the live mapping is set per page in the components.</p>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; border-top: 1px solid #24242b; padding-top: 34px">
+
+    <div style="display: flex; flex-direction: column; gap: 16px">
+      <div class="kicker">Section header</div>
+      <p class="note">Every section opens with the same row: a mono <span class="mono" style="color: #ece9e2">&lt;h2&gt;</span> stripped of UA bold/size, a skewed accent slash before it, an optional link at the right, and a hairline under.</p>
+      <div style="display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid #24242b; padding-bottom: 10px; margin-top: 4px">
+        <h2 style="font-weight: 400; font-size: 12px; margin: 0; position: relative; padding-left: 16px; font-family: 'JetBrains Mono', ui-monospace, monospace; letter-spacing: 0.04em; color: #4aa5ff">
+          <span style="position: absolute; left: 0; top: 50%; width: 6px; height: 14px; background: #4aa5ff; transform: translateY(-50%) skewX(-8deg)"></span>
+          SELECTED WORK
+        </h2>
+        <a href="#" style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #8a8f9c">all →</a>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 16px">
+      <div class="kicker">Accessibility rules</div>
+      <ul style="margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 9px">
+        <li class="note">Focus ring is crimson, 2px, 3px offset — on every focusable. <span class="mono" style="color: #ece9e2">#main</span> is exempt (focused programmatically on route change).</li>
+        <li class="note">Every hover state is mirrored with <span class="mono" style="color: #ece9e2">:focus-within</span> or <span class="mono" style="color: #ece9e2">:focus-visible</span> so keyboard reaches it.</li>
+        <li class="note">Below 620px, hover-dependent content is shown unconditionally (work blurbs) or hidden (trailing preview, callouts, hero hint).</li>
+        <li class="note"><span class="mono" style="color: #ece9e2">--dim</span> and <span class="mono" style="color: #ece9e2">--muted</span> both pass AA on <span class="mono" style="color: #ece9e2">--void</span>. Disabled links use <span class="mono" style="color: #ece9e2">--muted</span>, never opacity — opacity would fail contrast.</li>
+        <li class="note">Small links carry ±10px padding/margin for a larger tap target.</li>
+        <li class="note"><span class="mono" style="color: #ece9e2">prefers-reduced-motion</span> kills all transitions and animations globally; components also guard in JS.</li>
+        <li class="note">A skip link sits off-screen until focused.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 16px; border-top: 1px solid #24242b; padding-top: 34px">
+    <div class="kicker">Surface rules</div>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px">
+      <div style="border: 1px solid #24242b; padding: 20px; display: flex; flex-direction: column; gap: 8px">
+        <div style="font-size: 15px">No radii</div>
+        <p class="note">Everything is square except the 50% dots and the hero's 2px placeholder frame. No rounded cards.</p>
+      </div>
+      <div style="border: 1px solid #24242b; padding: 20px; display: flex; flex-direction: column; gap: 8px">
+        <div style="font-size: 15px">No shadows</div>
+        <p class="note">The one exception is the work-row dot's <span class="mono" style="color: #ece9e2">0 0 14px</span> glow on hover — light, not depth.</p>
+      </div>
+      <div style="border: 1px solid #24242b; padding: 20px; display: flex; flex-direction: column; gap: 8px">
+        <div style="font-size: 15px">Hairlines only</div>
+        <p class="note">Structure comes from 1px <span class="mono" style="color: #ece9e2">--line</span> rules and whitespace — never fills or boxes.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

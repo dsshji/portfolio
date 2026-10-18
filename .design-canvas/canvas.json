@@ -1,0 +1,19 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html", "x": 0, "y": 0, "w": 900, "h": 1180 },
+    { "file": "Color.dc.html", "x": 1000, "y": 0, "w": 900, "h": 1420 },
+    { "file": "Type.dc.html", "x": 2000, "y": 0, "w": 900, "h": 1520 },
+    { "file": "Components.dc.html", "x": 0, "y": 1660, "w": 900, "h": 1900 },
+    { "file": "Patterns.dc.html", "x": 1000, "y": 1660, "w": 900, "h": 1560 }
+  ],
+  "annotations": [
+    {
+      "id": "source-note",
+      "x": 2000,
+      "y": 1660,
+      "w": 420,
+      "text": "Extracted from the live source, not redrawn:\n\n· src/styles/tokens.css\n· src/styles/swatches.css\n· src/styles/global.css\n· src/data/palette.ts\n· the component + page stylesheets\n\nHover states on the Components board are the real CSS transitions, copied verbatim. If a token changes in the repo, this canvas does not follow — re-extract."
+    }
+  ],
+  "launch": { "view": "canvas" }
+}
