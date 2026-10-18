@@ -7,8 +7,8 @@ import { asset } from '@/lib/asset';
 /* ═══════════════════════════════════════════════════════════════
    SKETCHES GALLERY — asymmetric: each tile keeps its sketch's native
    size/aspect (from data/sketches.ts `w`/`h`) and scales down only when
-   the column is narrower than the sketch. Live embeds are MUTED via
-   allow="autoplay 'none'" (no need to touch the sketch code). Camera
+   the column is narrower than the sketch. Live embeds may autoplay
+   (allow="autoplay"), sound included. Camera
    sketches show a muted looping video cover instead of a live iframe.
    Click any tile → opens it on the p5 editor.
    ═══════════════════════════════════════════════════════════════ */
@@ -30,8 +30,8 @@ function TileMedia({ s }: { s: Sketch }) {
         aria-hidden="true"
         data-w={s.w}
         style={{ width: s.w, height: s.h }}
-        /* muted: deny autoplay so sound sketches stay silent in preview */
-        allow="autoplay 'none'; microphone 'none'; camera 'none'"
+        /* autoplay allowed so sound sketches play in the gallery */
+        allow="autoplay; microphone 'none'; camera 'none'"
       />
     );
   }

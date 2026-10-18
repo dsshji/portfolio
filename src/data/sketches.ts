@@ -1,7 +1,7 @@
 /* SKETCHES — p5.js experiments (editor.p5js.org/dsshji), shown on /sketches
    as an ASYMMETRIC gallery: each tile keeps its sketch's NATIVE size/aspect
-   (scaled down only when the column is too narrow). No gray mask; audio is
-   muted via the embed (allow="autoplay 'none'") so you don't touch sketch code.
+   (scaled down only when the column is too narrow). No gray mask; embeds
+   are allowed to autoplay (allow="autoplay"), sound included.
 
    ★ TWEAK THE SIZES HERE ★  The `w` / `h` on each entry are the native p5
    canvas dimensions — change them and the tile resizes. Order below is the
