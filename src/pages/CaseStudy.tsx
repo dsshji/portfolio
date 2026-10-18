@@ -3,6 +3,7 @@ import { useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getProject } from '@/data/projects';
 import type { MediaRef, Project } from '@/data/types';
+import { asset } from '@/lib/asset';
 
 /* ═══════════════════════════════════════════════════════════════
    CASE STUDY (/work/[slug]):
@@ -60,9 +61,9 @@ function Media({ media, swatch }: { media?: MediaRef | null; swatch: string }) {
       // keep the media's own shape (w/h) instead of a fixed 16:9 → no cropping
       style={media?.w && media?.h ? { aspectRatio: `${media.w - 2 * (media.cropX ?? 0)} / ${media.h}` } : undefined}
     >
-      {media?.type === 'image' && <img src={media.src} alt={media.alt} />}
+      {media?.type === 'image' && <img src={asset(media.src)} alt={media.alt} />}
       {media?.type === 'video' && (
-        <video src={media.src} poster={media.poster} controls playsInline preload="metadata" />
+        <video src={asset(media.src)} poster={asset(media.poster)} controls playsInline preload="metadata" />
       )}
       {media?.type === 'embed' && <EmbedFrame media={media} />}
       {!media && (

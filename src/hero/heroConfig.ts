@@ -44,5 +44,7 @@ export const PERF = {
   pauseWhenOffscreen: true, // IntersectionObserver pauses the loop
 };
 
+import { asset } from '@/lib/asset';
+
 /** Path the owner drops the model at; loaded lazily via drei useGLTF. */
-export const MODEL_PATH = '/models/tiger.glb';
+export const MODEL_PATH = asset('/models/tiger.glb');

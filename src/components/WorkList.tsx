@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import type { Project } from '@/data/types';
 import { accentAt } from '@/data/palette';
+import { asset } from '@/lib/asset';
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 
 /* ═══════════════════════════════════════════════════════════════
@@ -112,9 +113,9 @@ export default function WorkList({ projects }: WorkListProps) {
         <div className="preview" ref={previewRef} aria-hidden="true">
           {active?.thumb ? (
             /\.(mp4|webm|mov)$/i.test(active.thumb) ? (
-              <video key={active.thumb} src={active.thumb} autoPlay muted loop playsInline />
+              <video key={active.thumb} src={asset(active.thumb)} autoPlay muted loop playsInline />
             ) : (
-              <img src={active.thumb} alt="" />
+              <img src={asset(active.thumb)} alt="" />
             )
           ) : (
             <div

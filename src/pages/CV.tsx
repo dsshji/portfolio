@@ -1,6 +1,7 @@
 import './CV.css';
 import { CV_SECTIONS, CV_PDF_PATH } from '@/data/cv';
 import { ROLE } from '@/data/about';
+import { asset } from '@/lib/asset';
 
 /* /cv — the CV rendered as an actual HTML page (not just a PDF link),
    with a working "Download PDF" button (brief §4). The button points at
@@ -14,7 +15,7 @@ export default function CV() {
           <p className="role">{ROLE}</p>
         </div>
         {/* `download` prompts a save rather than navigating in-tab */}
-        <a className="pdf-btn" href={CV_PDF_PATH} download>
+        <a className="pdf-btn" href={asset(CV_PDF_PATH)} download>
           Download PDF ↓
         </a>
       </header>

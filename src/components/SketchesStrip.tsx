@@ -2,6 +2,7 @@ import './SketchesStrip.css';
 import { useEffect, useRef } from 'react';
 import type { Sketch } from '@/data/types';
 import { p5FullUrl } from '@/data/types';
+import { asset } from '@/lib/asset';
 
 /* ═══════════════════════════════════════════════════════════════
    SKETCHES GALLERY — asymmetric: each tile keeps its sketch's native
@@ -35,7 +36,7 @@ function TileMedia({ s }: { s: Sketch }) {
     );
   }
   if (s.cover || s.thumb) {
-    const src = (s.cover || s.thumb) as string;
+    const src = asset((s.cover || s.thumb) as string);
     return /\.(mp4|webm|mov)$/i.test(src) ? (
       <video className="tile-cover" src={src} autoPlay muted loop playsInline />
     ) : (
